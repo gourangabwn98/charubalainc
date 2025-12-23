@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00326e, #03347f, #0b1d3a);
+  background-size: 300% 300%;
+  animation: gradientMove 10s ease infinite;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient Animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Stars */
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: blink 2s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: white;
+  color: black;
+  flex-wrap: wrap;
+}
+
+.navLinks {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.navBtn {
+  padding: 10px 15px;
+  background: #0b1d3a;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cards */
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  background: #07152c;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navLinks {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+}
