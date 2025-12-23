@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const isMobile = window.innerWidth <= 768;
@@ -27,7 +28,6 @@ const Home = () => {
           />
         ))}
       </div>
-
       {/* Navbar */}
       <div style={styles.navbar}>
         <div style={styles.logo} onClick={() => handleNavigate("/")}>
@@ -58,7 +58,6 @@ const Home = () => {
           </div>
         )}
       </div>
-
       {/* Mobile Side Navbar */}
       {isMobile && menuOpen && (
         <div
@@ -83,7 +82,6 @@ const Home = () => {
           </button>
         </div>
       </div>
-
       {/* Hero Section */}
       <div style={styles.hero}>
         <h1
@@ -141,30 +139,8 @@ const Home = () => {
           </p>
         </div>
       </div>
-
       {/* Footer */}
-      <div
-        style={{
-          ...styles.footer,
-          flexDirection: isMobile ? "column" : "row",
-          gap: isMobile ? 20 : 100,
-          textAlign: "center",
-        }}
-      >
-        <div style={styles.logo} onClick={() => handleNavigate("/")}>
-          ⬢ Tech Savvy <br />
-          <span style={{ fontSize: 12 }}>Project Management</span>
-        </div>
-
-        <div style={{ display: "flex", gap: 30 }}>
-          <span onClick={() => handleNavigate("/services")}>Services</span>
-          <span onClick={() => handleNavigate("/about")}>About</span>
-        </div>
-
-        <span onClick={() => handleNavigate("/consultation")}>
-          Book a Free Consultation
-        </span>
-      </div>
+      <Footer />
     </div>
   );
 };

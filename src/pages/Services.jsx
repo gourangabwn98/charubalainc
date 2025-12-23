@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Services = () => {
   const isMobile = window.innerWidth <= 768;
@@ -159,19 +160,7 @@ const Services = () => {
       </div>
 
       {/* Footer */}
-      <div style={styles.footer}>
-        <div style={styles.logo} onClick={() => handleNavigate("/")}>
-          ⬢ Tech Savvy <br />
-          <span style={{ fontSize: 12 }}>Project Management</span>
-        </div>
-        <div style={{ display: "flex", gap: 30 }}>
-          <span onClick={() => handleNavigate("/services")}>Services</span>
-          <span onClick={() => handleNavigate("/about")}>About</span>
-        </div>
-        <span onClick={() => handleNavigate("/consultation")}>
-          Book a Free Consultation
-        </span>
-      </div>
+      <Footer />
     </div>
   );
 };
