@@ -8,7 +8,7 @@ const Home = () => {
 
   const handleNavigate = (path) => {
     navigate(path);
-    setMenuOpen(false); // Close mobile menu after navigation
+    setMenuOpen(false); // Close menu after click
   };
 
   return (
@@ -35,7 +35,7 @@ const Home = () => {
           <span style={{ fontSize: 12 }}>Project Management</span>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         {!isMobile && (
           <div style={styles.navLinks}>
             <span onClick={() => handleNavigate("/services")}>Services</span>
@@ -59,7 +59,7 @@ const Home = () => {
         )}
       </div>
 
-      {/* Mobile Side Navbar (slides from right) */}
+      {/* Mobile Side Navbar */}
       {isMobile && menuOpen && (
         <div
           style={styles.sideNavbarOverlay}
@@ -118,7 +118,7 @@ const Home = () => {
           </button>
         </div>
 
-        {/* Services Cards */}
+        {/* Services Cards - 2x2 on mobile */}
         <div style={styles.cardWrap}>
           <Card icon="☁️" title="Cloud Migration" />
           <Card icon="🛡️" title="Compliance & Governance" />
@@ -171,8 +171,23 @@ const Home = () => {
 
 const Card = ({ icon, title }) => (
   <div style={styles.card}>
-    <div style={{ fontSize: 26 }}>{icon}</div>
-    <p style={{ marginTop: 10, fontWeight: 600 }}>{title}</p>
+    <div
+      style={{
+        fontSize: window.innerWidth <= 768 ? 36 : 26,
+        marginBottom: 12,
+      }}
+    >
+      {icon}
+    </div>
+    <p
+      style={{
+        margin: 0,
+        fontWeight: 600,
+        fontSize: window.innerWidth <= 768 ? 14 : 16,
+      }}
+    >
+      {title}
+    </p>
   </div>
 );
 
@@ -262,19 +277,28 @@ const styles = {
     cursor: "pointer",
   },
 
+  // Key fix: 2x2 grid on mobile
   cardWrap: {
     marginTop: 40,
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gridTemplateColumns:
+      window.innerWidth <= 768
+        ? "1fr 1fr"
+        : "repeat(auto-fit, minmax(200px, 1fr))",
     gap: 20,
   },
 
   card: {
     backgroundColor: "#fff",
     color: "#000",
-    padding: 20,
+    padding: window.innerWidth <= 768 ? 20 : 24,
     borderRadius: 10,
     textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: 120,
   },
 
   testimonial: {
@@ -322,7 +346,6 @@ const styles = {
     backgroundColor: "#000",
   },
 
-  // New: Side Navbar Styles
   sideNavbarOverlay: {
     position: "fixed",
     top: 0,
@@ -365,7 +388,7 @@ const styles = {
   },
 };
 
-// Add the blink animation globally (since it's used in inline styles)
+// Add blink animation
 const styleSheet = document.createElement("style");
 styleSheet.innerHTML = `
   @keyframes blink {
